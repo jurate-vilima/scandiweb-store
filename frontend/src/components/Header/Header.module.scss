@@ -1,0 +1,36 @@
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/mixins' as m;
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+    background-color: v.$light-ui-color;
+    height: v.$header-height;
+
+    @include m.mobile {
+        height: v.$header-height-mobile;
+    }
+
+    @include m.tablet {
+        height: v.$header-height-tablet;
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include m.full-size;
+        background: v.$light-ui-color;
+    }
+
+    .cart {
+        width: 12%;
+        text-align: right;
+
+        &Icon {
+            width: 20px;
+        }
+    }
+}

@@ -1,0 +1,76 @@
+@use '@/styles/functions' as f;
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/mixins' as m;
+
+$cart-padding: 1rem;
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    background-color: rgba(57, 55, 72, 0.22);
+
+    &Container {
+        position: relative;
+        width: 90%;
+        margin: 0 auto;
+
+        @media (max-width: v.$breakpoint-tablet-max) {
+            @include m.full-size;
+        }
+    }
+}
+
+.cartPanelContent {
+    width: v.$cart-width;
+    background: v.$light-ui-color;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding-top: calc(v.$header-height + 2rem);
+    padding-bottom: 2rem;
+    gap: 2rem;
+    max-height: 100vh;
+    overflow-y: auto;
+    right: 0;
+    top: 0;
+    margin: 0 -1rem;
+    z-index: 2;
+
+    & > * {
+        padding: 0 $cart-padding;
+    }
+
+    @media (max-width: v.$breakpoint-tablet-max) {
+        @include m.full-size;
+        padding-right: 5%;
+        padding-left: 5%;
+        left: $cart-padding;
+    }
+}
+
+.title {
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 700;
+
+    span {
+        font-weight: 500;
+    }
+}
+
+.items {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: f.rem(40);
+}
+
+.error {
+    color: red;
+    margin-top: f.rem(12);
+}

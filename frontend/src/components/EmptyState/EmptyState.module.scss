@@ -1,0 +1,30 @@
+@use '@/styles/functions' as f;
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/mixins' as m;
+
+.wrapper {
+    height: 60vh;
+    text-align: center;
+    @include m.center-flex;
+    flex-direction: column;
+
+    & h1 {
+        font-weight: 700;
+        font-size: 3rem;
+        color: v.$accent-color;
+        padding-bottom: f.rem(30);
+
+        @include m.mobile {
+            font-size: 2rem;
+        }
+    }
+
+    & h2 {
+        font-size: 2rem;
+        padding-bottom: 2rem;
+
+        @include m.mobile {
+            font-size: 1.5rem;
+        }
+    }
+}

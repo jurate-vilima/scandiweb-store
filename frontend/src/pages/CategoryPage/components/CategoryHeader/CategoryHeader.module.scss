@@ -1,0 +1,16 @@
+@use '@/styles/mixins' as m;
+@use '@/styles/functions' as f;
+
+.title {
+    font-size: f.rem(42);
+    margin-bottom: f.rem(103);
+
+    @include m.tablet {
+        margin-bottom: f.rem(50);
+    }
+
+    @include m.mobile {
+        font-size: f.rem(25);
+        margin-bottom: f.rem(30);
+    }
+}

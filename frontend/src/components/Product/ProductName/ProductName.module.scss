@@ -1,0 +1,16 @@
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/functions' as f;
+
+.name {
+    font-weight: 300;
+    line-height: v.$line-height-base;
+
+    &Medium {
+        font-size: f.rem(18);
+    }
+
+    &Large {
+        font-weight: 600;
+        font-size: f.rem(30);
+    }
+}

@@ -1,0 +1,23 @@
+@use '@/styles/functions' as f;
+@use '@/styles/abstracts/variables' as v;
+
+.attributeOptions {
+    display: flex;
+    gap: f.rem(12);
+}
+
+.attributeName {
+    margin-bottom: f.rem(10);
+    font-family: v.$font-roboto-condensed;
+    font-size: f.rem(18);
+    text-transform: uppercase;
+    display: block;
+
+    &Compact {
+        display: block;
+        font-size: f.rem(14);
+        font-weight: 400;
+        line-height: v.$line-height-base;
+        margin-bottom: f.rem(8);
+    }
+}

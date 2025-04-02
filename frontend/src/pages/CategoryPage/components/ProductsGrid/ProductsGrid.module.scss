@@ -1,0 +1,23 @@
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/mixins' as m;
+
+.grid {
+    width: 100%;
+    @include m.grid(3, v.$grid-gap-row, v.$grid-gap-column);
+
+    @include m.mobile {
+        @include m.grid(1, 3rem);
+    }
+
+    @include m.tablet {
+        @include m.grid(2, 3rem, v.$grid-gap-column);
+    }
+
+    @media (min-width: v.$breakpoint-desktop) and (max-width: calc(v.$breakpoint-large-desktop - 1px)) {
+        @include m.grid(3, v.$grid-gap-row, v.$grid-gap-column);
+    }
+
+    @media (min-width: v.$breakpoint-large-desktop) {
+        @include m.grid(4, v.$grid-gap-row, v.$grid-gap-column);
+    }
+}

@@ -1,0 +1,38 @@
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/functions' as f;
+@use '@/styles/mixins' as m;
+
+html {
+    font-family: v.$font-raleway;
+    font-weight: 400;
+    font-style: normal;
+    font-size: f.rem(v.$base-font-size);
+    color: v.$base-color;
+    transition: all 0.3s ease;
+}
+
+.container {
+    width: 86%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+main {
+    position: relative;
+    top: v.$header-height;
+    padding-top: v.$header-height;
+    padding-bottom: f.rem(191);
+    height: 80%;
+
+    @include m.mobile {
+        top: v.$header-height-mobile;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+    }
+
+    @include m.tablet {
+        top: v.$header-height-tablet;
+        padding-top: 3rem;
+        padding-bottom: 4rem;
+    }
+}

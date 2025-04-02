@@ -1,0 +1,6 @@
+@use 'sass:math';
+@use '@/styles/abstracts/variables' as v;
+
+@function rem($px, $base: v.$base-font-size) {
+    @return math.div($px, $base) * 1rem;
+}

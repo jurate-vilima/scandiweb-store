@@ -1,0 +1,88 @@
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/mixins' as m;
+@use '@/styles/functions' as f;
+
+.card {
+    overflow: hidden;
+    padding: v.$card-padding;
+    @include m.transition;
+
+    &:hover {
+        @include m.card-shadow;
+    }
+}
+
+.imageWrapper {
+    aspect-ratio: 1 / 1;
+    margin-bottom: 1.5rem;
+    position: relative;
+    @include m.center-flex;
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+}
+
+.image {
+    @include m.full-size;
+    @include m.center-flex;
+}
+
+.info {
+    text-align: left;
+}
+
+.price {
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.outOfStock {
+    .imageWrapper::after {
+        content: 'out of stock';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: v.$light-ui-color;
+        opacity: 0.5;
+        text-transform: uppercase;
+        font-size: v.$out-of-stock-font-size;
+        color: v.$out-of-stock-text-color;
+        @include m.center-flex;
+    }
+
+    .price {
+        color: v.$out-of-stock-text-color;
+    }
+}
+
+.quickShopButton {
+    position: absolute;
+    bottom: calc(v.$quick-shop-btn-size / -2);
+    right: 1rem;
+    background-color: v.$accent-color;
+    padding: 14px;
+    cursor: pointer;
+    @include m.center-flex;
+    @include m.transition(opacity);
+    opacity: 0;
+    @include m.circle(52px, v.$accent-color, v.$light-ui-color);
+
+    .card:hover & {
+        opacity: 1;
+    }
+
+    @media (max-width: v.$breakpoint-tablet-max) {
+        opacity: 1;
+    }
+
+    @include m.mobile {
+        width: 60px;
+        height: 60px;
+    }
+}

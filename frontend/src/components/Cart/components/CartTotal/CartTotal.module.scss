@@ -1,0 +1,15 @@
+@use '@/styles/functions' as f;
+@use '@/styles/abstracts/variables' as v;
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.priceLabel {
+    font-family: v.$font-roboto;
+    font-weight: 500;
+}

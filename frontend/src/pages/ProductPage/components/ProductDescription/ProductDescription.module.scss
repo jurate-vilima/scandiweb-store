@@ -1,0 +1,21 @@
+@use '@/styles/functions' as f;
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/mixins' as m;
+
+.productDescription {
+    font-family: v.$font-roboto;
+    line-height: v.$line-height-base;
+
+    & li:not(:last-child) {
+        padding-bottom: 0.5rem;
+    }
+
+    & h3 {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    & p:not(:last-child) {
+        padding-bottom: 1rem;
+    }
+}

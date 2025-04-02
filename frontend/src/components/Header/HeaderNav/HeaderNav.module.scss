@@ -1,0 +1,83 @@
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/mixins' as m;
+
+.nav {
+    display: flex;
+    line-height: v.$header-height;
+    @include m.transition;
+
+    @include m.tablet {
+        line-height: v.$header-height-tablet;
+    }
+
+    @include m.mobile {
+        position: absolute;
+        top: v.$header-height-mobile;
+        right: -100%;
+
+        background-color: v.$light-ui-color;
+        flex-direction: column;
+        padding: 1rem;
+        height: calc(100vh - v.$header-height-mobile);
+        z-index: -1;
+        padding-top: 10%;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+.navOpen {
+    display: flex;
+    top: v.$header-height-mobile;
+    right: 0;
+}
+
+.link {
+    padding: 0 1em;
+    color: v.$base-color;
+    display: inline-block;
+    height: 100%;
+    text-transform: uppercase;
+    position: relative;
+    @include m.transition(color);
+
+    &::before {
+        @include m.underline(transparent, v.$header-nav-underline-width);
+        width: 0;
+        @include m.transition();
+    }
+
+    &:hover {
+        color: v.$accent-color;
+
+        &::before {
+            width: 100%;
+            @include m.underline(
+                v.$accent-color,
+                v.$header-nav-underline-width
+            );
+
+            @include m.mobile {
+                width: 80%;
+            }
+        }
+    }
+
+    @include m.mobile {
+        height: 6%;
+        @include m.center-flex;
+    }
+}
+
+.active {
+    color: v.$accent-color;
+    font-weight: 600;
+
+    &::before {
+        @include m.underline(v.$accent-color, v.$header-nav-underline-width);
+
+        @include m.mobile {
+            width: 80%;
+        }
+    }
+}

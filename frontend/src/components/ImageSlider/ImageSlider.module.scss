@@ -1,0 +1,110 @@
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/mixins' as m;
+
+.imageSlider {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    height: 500px;
+
+    @media (max-width: v.$breakpoint-tablet-max) {
+        width: 100%;
+    }
+
+    &Thumbnails {
+        width: 20%;
+        height: 100%;
+        overflow: hidden;
+
+        :global(.swiper-slide) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: v.$breakpoint-mobile) {
+            display: none;
+        }
+    }
+
+    &ThumbnailItem {
+        height: 100%;
+    }
+
+    &ActiveItem {
+        width: 80%;
+        height: 100%;
+        @include m.center-flex;
+
+        @media (max-width: v.$breakpoint-mobile) {
+            width: 100%;
+            height: auto;
+        }
+
+        :global(.swiper) {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+
+            @media (max-width: v.$breakpoint-mobile) {
+                height: auto;
+            }
+        }
+
+        :global(.swiper-slide) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        :global(.swiper-button-next),
+        :global(.swiper-button-prev) {
+            background: rgb(0 0 0 / 73%);
+            height: 2rem;
+            width: 2rem;
+        }
+
+        :global(.swiper-button-next::after),
+        :global(.swiper-button-prev::after) {
+            font-size: 1rem;
+            color: white;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        :global(.swiper-button-prev) {
+            left: var(--swiper-navigation-sides-offset, 1rem);
+        }
+
+        :global(.swiper-button-next) {
+            right: var(--swiper-navigation-sides-offset, 1rem);
+        }
+
+        :global(.swiper-rtl .swiper-button-next) {
+            left: var(--swiper-navigation-sides-offset, 1rem);
+        }
+
+        :global(.swiper-rtl .swiper-button-prev) {
+            right: var(--swiper-navigation-sides-offset, 1rem);
+        }
+    }
+
+    &ActiveImg {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+
+        @media (max-width: v.$breakpoint-mobile) {
+            height: auto;
+        }
+    }
+
+    &ThumbnailImg {
+        width: auto;
+        height: 100%;
+    }
+}

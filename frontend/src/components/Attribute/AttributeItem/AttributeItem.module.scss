@@ -1,0 +1,75 @@
+@use '@/styles/functions' as f;
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/mixins' as m;
+
+.colorSwatch {
+    min-width: v.$swatch-size;
+    height: v.$swatch-size;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: scale(1.1);
+        outline: 1px solid v.$accent-color;
+        outline-offset: 2px;
+    }
+
+    &.selected {
+        outline: 1px solid v.$accent-color;
+        outline-offset: 2px;
+    }
+
+    &.compact {
+        width: f.rem(26);
+        height: f.rem(26);
+        min-width: auto;
+        pointer-events: none;
+        cursor: default;
+
+        &:hover {
+            transform: none;
+            outline: none;
+        }
+    }
+}
+
+.textSwatch {
+    font-family: v.$font-source-sans;
+    line-height: f.rem(18);
+    letter-spacing: 5;
+    min-width: f.rem(63);
+    height: f.rem(45);
+    @include m.center-flex;
+    border: 1px solid v.$base-color;
+    cursor: pointer;
+    @include m.transition($duration: 0.2s);
+    background: v.$light-ui-color;
+
+    &:hover {
+        background-color: v.$base-color;
+        color: v.$light-ui-color;
+    }
+
+    &.selected {
+        background-color: v.$base-color;
+        color: v.$light-ui-color;
+    }
+
+    &.compact {
+        pointer-events: none;
+        cursor: default;
+        user-select: none;
+        line-height: v.$line-height-base;
+        font-size: f.rem(14);
+        padding: 3px;
+        height: calc(1rem * v.$line-height-base);
+        aspect-ratio: 1 / 1;
+        @include m.center-flex;
+        min-width: auto;
+
+        &:hover {
+            background-color: inherit;
+            color: inherit;
+        }
+    }
+}

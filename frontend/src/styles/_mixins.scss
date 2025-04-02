@@ -1,0 +1,98 @@
+@use 'sass:list';
+@use '@/styles/abstracts/variables' as v;
+
+@mixin mobile {
+    @media (max-width: v.$breakpoint-mobile) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: v.$breakpoint-tablet-min) and (max-width: v.$breakpoint-tablet-max) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: v.$breakpoint-desktop) {
+        @content;
+    }
+}
+
+@mixin underline($color, $height: 100%) {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100%;
+    height: $height;
+    background: $color;
+}
+
+@mixin nav-link($base-color, $active-color) {
+    color: $base-color;
+    text-transform: uppercase;
+    position: relative;
+    @include m.transition(color);
+
+    &::before {
+        @include m.underline(transparent);
+        width: 0;
+        @include m.transition(background);
+    }
+
+    &:hover {
+        color: $active-color;
+
+        &::before {
+            @include m.underline($active-color);
+        }
+    }
+}
+
+@mixin transition(
+    $properties: all,
+    $duration: v.$transition-duration,
+    $easing: v.$transition-easing
+) {
+    transition: $properties $duration $easing;
+}
+
+@mixin grid(
+    $columns: 3,
+    $row-gap: v.$grid-gap-row,
+    $column-gap: v.$grid-gap-column
+) {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    gap: $row-gap $column-gap;
+}
+
+@mixin center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-center-horizontally {
+    display: flex;
+    align-items: center;
+}
+
+@mixin full-size {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin card-shadow($shadow: v.$card-shadow) {
+    box-shadow: $shadow;
+}
+
+@mixin circle($size: 20px, $bg: transparent, $color: inherit) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background-color: $bg;
+    color: $color;
+}

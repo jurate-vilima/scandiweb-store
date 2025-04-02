@@ -1,0 +1,30 @@
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/functions' as f;
+@use '@/styles/mixins' as m;
+
+.cart {
+    &Button {
+        background: none;
+        position: relative;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    &Icon {
+        @include m.mobile {
+            width: 25px;
+        }
+    }
+
+    &Badge {
+        position: absolute;
+        top: -8px;
+        right: -12px;
+        font-size: f.rem(14);
+        font-weight: 700;
+        @include m.circle(20px, v.$base-color, v.$light-ui-color);
+        @include m.center-flex();
+        font-family: v.$font-roboto;
+    }
+}

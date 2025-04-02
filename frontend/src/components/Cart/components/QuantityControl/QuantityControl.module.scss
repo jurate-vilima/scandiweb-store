@@ -1,0 +1,60 @@
+@use '@/styles/functions' as f;
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/mixins' as m;
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn {
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: 1px solid v.$base-color;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    @include m.transition(background-color, 0.2s);
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        background-color: v.$base-color;
+        transition: background-color 0.2s ease;
+    }
+
+    &.plus::before,
+    &.minus::before {
+        width: 8px;
+        height: 2px;
+    }
+
+    &.plus::after {
+        width: 2px;
+        height: 8px;
+    }
+
+    &.minus::after {
+        display: none;
+    }
+
+    &:hover {
+        background: v.$base-color;
+
+        &::before,
+        &::after {
+            background-color: v.$light-ui-color;
+        }
+    }
+}
+
+.qty {
+    font-weight: 500;
+}

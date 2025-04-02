@@ -1,0 +1,20 @@
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/functions' as f;
+
+.price {
+    line-height: v.$line-height-base;
+    font-weight: 500;
+
+    &Small {
+        font-size: 1rem;
+    }
+
+    &Medium {
+        font-size: f.rem(18);
+    }
+
+    &Large {
+        font-size: f.rem(24);
+        font-weight: 700;
+    }
+}

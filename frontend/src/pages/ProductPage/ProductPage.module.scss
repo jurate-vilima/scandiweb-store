@@ -1,0 +1,69 @@
+@use '@/styles/functions' as f;
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/mixins' as m;
+
+$slider-details-gap: 10%;
+
+.productPage {
+    width: 88%;
+
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
+}
+
+.productData {
+    display: flex;
+    gap: $slider-details-gap;
+
+    @media (max-width: 1024px) {
+        flex-direction: column;
+    }
+}
+
+.productParams {
+    display: flex;
+    flex-direction: column;
+    gap: f.rem(30);
+    width: 100% - v.$slider-width - $slider-details-gap;
+
+    @include m.mobile {
+        width: 100%;
+    }
+
+    @include m.tablet {
+        width: 100%;
+    }
+}
+
+.productAttributes {
+    display: flex;
+    gap: f.rem(30);
+    flex-direction: column;
+
+    & .price {
+        font-family: v.$font-raleway;
+    }
+}
+
+.productDescription {
+    font-family: v.$font-roboto;
+    line-height: 1.6;
+}
+
+.productSlider {
+    width: v.$slider-width;
+
+    @media (max-width: v.$breakpoint-tablet-max) {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+}
+
+.btn {
+    width: 100%;
+
+    @include m.tablet {
+        width: 55%;
+    }
+}
