@@ -29,6 +29,7 @@ backend/.phpunit.result.cache
 backend/.phpunit.cache/
 backend/.phpunit/
 backend/.idea/
+backend/config/.env
 
 *.zip
 *.tar
