@@ -6,9 +6,9 @@ class Database
 {
     private \PDO $pdo;
 
-    public function __construct(string $host, string $dbName, string $user, string $pass)
+    public function __construct(string $host, string $port, string $dbName, string $user, string $pass)
     {
-        $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
+        $dsn = "mysql:host={$host};port={$port};dbname={$dbName};charset=utf8";
 
         try {
             $this->pdo = new \PDO($dsn, $user, $pass, [

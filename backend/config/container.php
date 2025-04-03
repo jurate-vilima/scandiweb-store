@@ -23,11 +23,12 @@ return (function () {
     $builder->addDefinitions([
         Database::class => function () {
             $host   = $_ENV['DB_HOST'];
+            $port   = $_ENV['DB_PORT'];
             $dbName = $_ENV['DB_NAME'];
             $user   = $_ENV['DB_USER'];
             $pass   = $_ENV['DB_PASS'];
 
-            return new Database($host, $dbName, $user, $pass);
+            return new Database($host, $port, $dbName, $user, $pass);
         },
 
         Request::class => \DI\create(Request::class),
