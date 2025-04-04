@@ -1,0 +1,23 @@
+services:
+  app:
+    build:
+      context: ./backend
+    ports:
+      - "8080:80"
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: scandiweb_ecommerce
+      DB_USER: root
+      DB_PASS: root
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: scandiweb_ecommerce
