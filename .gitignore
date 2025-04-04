@@ -30,6 +30,7 @@ backend/.phpunit.cache/
 backend/.phpunit/
 backend/.idea/
 backend/config/.env
+backend/storage/logs/
 
 *.zip
 *.tar
