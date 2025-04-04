@@ -1,6 +1,8 @@
+const GRAPHQL_API_URL = import.meta.env.VITE_GRAPHQL_API_URL;
+
 export async function graphQLRequest(query, variables = {}) {
     try {
-        const result = await fetch('http://scandiweb-store/graphql', {
+        const result = await fetch(GRAPHQL_API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ query, variables }),
