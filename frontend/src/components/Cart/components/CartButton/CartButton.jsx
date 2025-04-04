@@ -13,7 +13,7 @@ const CartButton = forwardRef(
             className,
             showBadge = true,
             onClick,
-            enableShake = false, 
+            enableShake = false,
         },
         ref,
     ) => {

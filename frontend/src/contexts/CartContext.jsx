@@ -15,11 +15,11 @@ export function CartProvider({ children }) {
     });
 
     const [isCartOpen, setIsCartOpen] = useState(false);
-    const [isShaking, setIsShaking] = useState(false); 
+    const [isShaking, setIsShaking] = useState(false);
 
     const triggerShake = () => {
         setIsShaking(true);
-        setTimeout(() => setIsShaking(false), 500); 
+        setTimeout(() => setIsShaking(false), 500);
     };
 
     useEffect(() => {
@@ -65,7 +65,7 @@ export function CartProvider({ children }) {
             ]);
         }
 
-        triggerShake(); 
+        triggerShake();
     };
 
     const updateQuantity = (key, delta) => {

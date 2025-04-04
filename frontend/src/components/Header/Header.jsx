@@ -47,7 +47,7 @@ function Header() {
                     <div className={styles.cart}>
                         <CartButton
                             showBadge
-                            enableShake 
+                            enableShake
                             className={styles.cartIcon}
                             data-testid="cart-btn"
                             onClick={handleCartClick}
