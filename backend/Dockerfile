@@ -13,15 +13,12 @@ RUN apt-get update && apt-get install -y \
  && docker-php-ext-install pdo pdo_mysql mbstring gd zip intl \
  && rm -rf /var/lib/apt/lists/*
 
-COPY composer.json composer.lock ./
-
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+COPY composer.json composer.lock ./
 RUN composer install --no-dev --optimize-autoloader
 
 COPY . .
-
-
 
 FROM php:8.3-fpm
 
@@ -34,7 +31,8 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libonig-dev \
  && docker-php-ext-install pdo pdo_mysql mbstring gd zip intl \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* \
+ && mkdir -p /run/php
 
 RUN rm /etc/nginx/sites-enabled/default
 
