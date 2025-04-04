@@ -1,4 +1,4 @@
-const GRAPHQL_API_URL = import.meta.env.VITE_GRAPHQL_API_URL;
+const GRAPHQL_API_URL = import.meta.env.VITE_API_URL;
 
 export async function graphQLRequest(query, variables = {}) {
     try {
