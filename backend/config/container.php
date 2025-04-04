@@ -1,7 +1,6 @@
 <?php
 
 use App\Controller\GraphQLController;
-use App\Controller\Main;
 use App\Database\Database;
 use App\Http\Request;
 use App\Repositories\CategoryRepository;
@@ -55,8 +54,6 @@ return (function () {
             );
         },
         OrderRepository::class => fn ($c) => new OrderRepository($c->get(Database::class)),
-
-        Main::class => \DI\create(Main::class),
 
         QueryType::class => function ($c) {
             return new QueryType($c->get(CategoryService::class), $c->get(ProductService::class));

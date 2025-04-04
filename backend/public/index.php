@@ -1,7 +1,6 @@
 <?php
 
 use App\Controller\GraphQLController;
-use App\Controller\Main;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
 
@@ -31,7 +30,6 @@ try {
 
     $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) {
         $r->post('/graphql', [GraphQLController::class, 'handle']);
-        $r->get('/', [Main::class, 'main']);
     });
 
     $routeInfo = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
