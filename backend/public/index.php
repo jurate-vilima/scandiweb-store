@@ -22,8 +22,10 @@ if (file_exists(__DIR__ . '/../storage/logs/render-error.log')) {
 require_once __DIR__ . '/../vendor/autoload.php';
 
 try {
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../config');
-    $dotenv->load();
+    if (file_exists(__DIR__ . '/../config/.env')) {
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../config');
+        $dotenv->load();
+    }
 
     $container = require __DIR__ . '/../config/container.php';
 
