@@ -2,8 +2,8 @@
 -- version 5.2.1deb3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Apr 02, 2025 at 12:49 PM
+-- Host: localhost:3306
+-- Generation Time: Apr 03, 2025 at 07:13 PM
 -- Server version: 8.0.41-0ubuntu0.24.04.1
 -- PHP Version: 8.3.6
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `attributes` (
   `id` int NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `type` enum('text','swatch') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `type` enum('text','swatch') COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `attributes`
@@ -52,8 +52,8 @@ INSERT INTO `attributes` (`id`, `name`, `type`) VALUES
 
 CREATE TABLE `categories` (
   `id` int NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
@@ -72,9 +72,9 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 
 CREATE TABLE `currencies` (
   `id` int NOT NULL,
-  `code` varchar(3) NOT NULL,
-  `symbol` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `code` varchar(3) COLLATE utf8mb4_general_ci NOT NULL,
+  `symbol` varchar(5) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `currencies`
@@ -92,37 +92,16 @@ INSERT INTO `currencies` (`id`, `code`, `symbol`) VALUES
 CREATE TABLE `orders` (
   `id` int NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`id`, `created_at`) VALUES
-(1, '2025-03-31 09:19:48'),
-(2, '2025-03-31 09:19:50'),
-(3, '2025-03-31 09:20:36'),
-(4, '2025-03-31 09:33:24'),
-(5, '2025-03-31 09:34:29'),
-(6, '2025-03-31 09:35:29'),
-(7, '2025-03-31 09:36:40'),
-(8, '2025-03-31 09:44:30'),
-(9, '2025-03-31 09:44:41'),
-(10, '2025-03-31 09:46:15'),
-(11, '2025-03-31 09:48:50'),
-(12, '2025-03-31 09:49:25'),
-(13, '2025-03-31 11:02:30'),
-(14, '2025-03-31 11:05:05'),
-(15, '2025-03-31 11:18:02'),
-(16, '2025-03-31 11:18:35'),
-(17, '2025-03-31 11:44:40'),
-(18, '2025-04-01 11:22:38'),
-(19, '2025-04-01 12:42:20'),
-(20, '2025-04-01 13:21:14'),
-(21, '2025-04-02 08:51:24'),
-(22, '2025-04-02 10:37:13'),
-(23, '2025-04-02 11:27:13'),
-(24, '2025-04-02 12:15:11');
+(1, '2025-03-26 20:52:45'),
+(2, '2025-03-26 21:39:49'),
+(3, '2025-04-02 06:28:18');
 
 -- --------------------------------------------------------
 
@@ -133,44 +112,20 @@ INSERT INTO `orders` (`id`, `created_at`) VALUES
 CREATE TABLE `order_items` (
   `id` int NOT NULL,
   `order_id` int DEFAULT NULL,
-  `product_id` varchar(255) DEFAULT NULL,
+  `product_id` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `quantity` int NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `currency_id` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `order_items`
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`, `currency_id`) VALUES
-(1, 11, 'jacket-canada-goosee', 1, 518.47, 1),
-(2, 12, 'huarache-x-stussy-le', 2, 144.69, 1),
-(3, 12, 'apple-airtag', 1, 120.57, 1),
-(4, 16, 'apple-airtag', 1, 120.57, 1),
-(5, 17, 'apple-airtag', 1, 120.57, 1),
-(6, 18, 'apple-iphone-12-pro', 2, 1000.76, 1),
-(7, 19, 'jacket-canada-goosee', 2, 518.47, 1),
-(8, 19, 'huarache-x-stussy-le', 1, 144.69, 1),
-(9, 19, 'ps-5', 1, 844.02, 1),
-(10, 20, 'apple-airtag', 1, 120.57, 1),
-(11, 20, 'apple-iphone-12-pro', 1, 1000.76, 1),
-(12, 20, 'apple-imac-2021', 1, 1688.03, 1),
-(13, 20, 'jacket-canada-goosee', 1, 518.47, 1),
-(14, 20, 'huarache-x-stussy-le', 1, 144.69, 1),
-(15, 20, 'apple-iphone-12-pro', 1, 1000.76, 1),
-(16, 21, 'jacket-canada-goosee', 2, 518.47, 1),
-(17, 21, 'apple-airtag', 1, 120.57, 1),
-(18, 21, 'ps-5', 3, 844.02, 1),
-(19, 22, 'jacket-canada-goosee', 1, 518.47, 1),
-(20, 22, 'apple-imac-2021', 1, 1688.03, 1),
-(21, 23, 'apple-imac-2021', 1, 1688.03, 1),
-(22, 23, 'apple-airtag', 2, 120.57, 1),
-(23, 23, 'apple-iphone-12-pro', 1, 1000.76, 1),
-(24, 23, 'jacket-canada-goosee', 3, 518.47, 1),
-(25, 23, 'huarache-x-stussy-le', 1, 144.69, 1),
-(26, 24, 'huarache-x-stussy-le', 2, 144.69, 1),
-(27, 24, 'huarache-x-stussy-le', 1, 144.69, 1);
+(1, 3, 'apple-airtag', 5, 120.57, 1),
+(2, 3, 'huarache-x-stussy-le', 1, 144.69, 1),
+(3, 3, 'huarache-x-stussy-le', 1, 144.69, 1);
 
 -- --------------------------------------------------------
 
@@ -180,10 +135,10 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`, 
 
 CREATE TABLE `prices` (
   `id` int NOT NULL,
-  `product_id` varchar(255) DEFAULT NULL,
+  `product_id` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
   `currency_id` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prices`
@@ -206,13 +161,13 @@ INSERT INTO `prices` (`id`, `product_id`, `price`, `currency_id`) VALUES
 --
 
 CREATE TABLE `products` (
-  `id` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text NOT NULL,
+  `id` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text COLLATE utf8mb4_general_ci NOT NULL,
   `in_stock` tinyint(1) NOT NULL DEFAULT '1',
   `category_id` int DEFAULT NULL,
-  `brand` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `brand` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
@@ -236,11 +191,11 @@ INSERT INTO `products` (`id`, `name`, `description`, `in_stock`, `category_id`, 
 
 CREATE TABLE `product_attributes` (
   `id` int NOT NULL,
-  `product_id` varchar(255) DEFAULT NULL,
+  `product_id` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `attribute_id` int DEFAULT NULL,
-  `value` varchar(255) NOT NULL,
-  `display_value` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `value` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `display_value` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product_attributes`
@@ -291,9 +246,9 @@ INSERT INTO `product_attributes` (`id`, `product_id`, `attribute_id`, `value`, `
 
 CREATE TABLE `product_images` (
   `id` int NOT NULL,
-  `product_id` varchar(255) DEFAULT NULL,
-  `image_url` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `product_id` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `image_url` text COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product_images`
@@ -422,13 +377,13 @@ ALTER TABLE `currencies`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `prices`
